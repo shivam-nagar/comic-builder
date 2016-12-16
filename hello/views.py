@@ -3,6 +3,7 @@ from django.http import HttpResponse
 
 from django import forms
 import tempfile
+import os
 
 from django.http import JsonResponse
 
@@ -42,8 +43,15 @@ def handle_uploaded_file(f,client):
             'name': 'picture.jpg',
             'type': 'image/jpeg',  # mimetype
             }
+    tempfile.tempdir = '/tmp/'
+    tf = tempfile.NamedTemporaryFile(delete=False)
     for chunk in f.chunks():
-        data['bits'] = xmlrpc_client.Binary(chunk)
+      tf.write(chunk)
+    f.close()
+    with open(tf.name, 'rb') as img:
+        data['bits'] = xmlrpc_client.Binary(img.read())
+
     response = client.call(media.UploadFile(data))
     attachment_id = response['id']
+    os.unlink(tf.name)
     return attachment_id
