@@ -43,7 +43,7 @@ def handle_uploaded_file(f):
             'type': 'image/jpeg',  # mimetype
             }
     for chunk in f.chunks():
-        data['bits'] = xmlrpc_client.Binary(img.read())
+        data['bits'] = xmlrpc_client.Binary(chunk)
     response = client.call(media.UploadFile(data))
     attachment_id = response['id']
     return attachment_id
