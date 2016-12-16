@@ -21,10 +21,11 @@ def index(request):
 
 
 def upload_file(request):
+    client = Client('https://3panelstories.wordpress.com/xmlrpc.php', '3panelstories', 'Tr0janh0rse')
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            attachment_id = handle_uploaded_file(request.FILES['file'])
+            attachment_id = handle_uploaded_file(request.FILES['file'], client)
             post = WordPressPost()
             post.title = form.cleaned_data['title']
             post.content = ''
@@ -36,8 +37,7 @@ def upload_file(request):
     else:
             return JsonResponse({'success':False, 'data':{}})
 
-def handle_uploaded_file(f):
-    client = Client('https://3panelstories.wordpress.com/xmlrpc.php', '3panelstories', 'Tr0janh0rse')
+def handle_uploaded_file(f,client):
     data = {
             'name': 'picture.jpg',
             'type': 'image/jpeg',  # mimetype
