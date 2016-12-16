@@ -26,7 +26,7 @@ def upload_file(request):
         if form.is_valid():
             attachment_id = handle_uploaded_file(request.FILES['file'])
             post = WordPressPost()
-            post.title = form.title
+            post.title = form.cleaned_data['title']
             post.content = ''
             post.post_status = 'publish'
             post.thumbnail = attachment_id
