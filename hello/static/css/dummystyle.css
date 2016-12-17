@@ -44,6 +44,7 @@
     }
 #fw-feed-items .fw-feed-item-image {
   width: 100% !important;
+  height: 200px !important;
 }
 #fw-feed-items .fw-feed-item-image-module {
   width: 100% !important;
