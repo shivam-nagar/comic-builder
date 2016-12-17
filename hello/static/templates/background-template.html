@@ -1,0 +1,11 @@
+<div class="background-selector" ng-controller="BackgroundSelectController">
+  
+  <h1> Choose a background for your story </h1>
+  <br>
+  <div class="background-list-scroll">
+    <span class="background-img-container" ng-repeat="background in backgrounds" ng-click="setBackground(background)">
+      <img ng-src="{{ background.img }}"> 
+    </span>
+  </div>
+</div>
+

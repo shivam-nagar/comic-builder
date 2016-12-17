@@ -1,0 +1,235 @@
+body {
+  font-size: 40px;
+}
+.comic-large-pane-container{
+  display: block;
+  top:100px;
+  bottom: 40%;
+  left:0px;
+  right:0px;
+}
+.canvas-container {
+  height: 600px;
+  width: 800px;
+  margin: auto;
+  margin-top: 10%;
+}
+#carousel-example-generic {
+  background-color: #486583;
+}
+.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next{
+  right:30%;
+}
+.carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev{
+  left:30%;
+}
+.comic-panel.active {
+  border:5px solid #486583;
+}
+.comic-strip {
+  border: 1px solid GREEN;
+  position: relative;
+  top:500px;
+  left:0px;
+  right:0px;
+}
+/* comic-panels */
+.comic-panel-container {
+  width: 100%;
+  padding: 5%;
+  padding-top: 10px;
+  background: #fff;
+}
+.comic-panel-container input,
+.comic-panel-container input:focus {
+  border: 0px;
+  border-bottom: 1px solid #486583;
+  border-radius: 0px;
+  box-shadow: none;
+  font-size: 36px;
+  padding-bottom: 18px;
+  line-height: 50px;
+  height: 60px;
+}
+.comic-panel-box {
+  border: 1px solid #333;
+  height: 260px;
+  margin-top:20px;
+}
+.comic-panel-container .btn.btn-lg {
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+.comic-panel {
+  border: 1px solid #333;
+  display: inline-block;
+  width: 30%;
+  margin-right: 6px;
+  margin-left: 6px;
+  height: 200px;
+  margin-top: 30px;
+}
+
+/* Save */
+.save-container .btn-lg {
+  width: 50%;
+  height: 60px;
+  font-size: 30px;
+  text-shadow: none;
+}
+
+/* CHAT BOXES */
+
+.chat {
+  width: 100%;
+  padding: 25px;
+  padding-left: 30px;
+}
+
+.bubble{
+  background-color: #F2F2F2;
+  border-radius: 5px;
+  box-shadow: 0 0 6px #B2B2B2;
+  display: inline-block;
+  padding: 18px 18px;
+  position: relative;
+  vertical-align: top;
+  width: 90%;
+  text-align: left;
+}
+
+.bubble::before {
+  background-color: #F2F2F2;
+  content: "\00a0";
+  display: block;
+  height: 16px;
+  position: absolute;
+  top: 11px;
+  transform:             rotate( 29deg ) skew( -35deg );
+      -moz-transform:    rotate( 29deg ) skew( -35deg );
+      -ms-transform:     rotate( 29deg ) skew( -35deg );
+      -o-transform:      rotate( 29deg ) skew( -35deg );
+      -webkit-transform: rotate( 29deg ) skew( -35deg );
+  width:  20px;
+}
+
+.me {
+  float: left;   
+  margin: 5px 45px 5px 20px;         
+  margin-top:30px;  
+}
+
+.me::before {
+  box-shadow: -2px 2px 2px 0 rgba( 178, 178, 178, .4 );
+  left: -9px;           
+}
+
+.you {
+  float: right;    
+  margin: 5px 20px 5px 45px;       
+  margin-top:30px;  
+}
+
+.you::before {
+  box-shadow: 2px -2px 2px 0 rgba( 178, 178, 178, .4 );
+  right: -9px;    
+}
+
+
+/* FOOTER */
+.footer {
+  display: block;
+}
+.character-selector,
+.background-selector {
+  padding-left:20px;
+}
+.character-selector .nav-tabs {
+  font-size: 1em;
+}
+.character-list-scroll,
+.background-list-scroll {
+  background-color: #fff;
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+  top:90px !important;
+}
+.character-img-container,
+.background-img-container {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;  
+  padding-left:30px;
+  padding-right:30px;
+  border-right: 1px solid #ccc;
+}
+.character-img-container > img {
+  width: 200px;
+}
+.background-img-container > img{
+  width: 400px;
+}
+
+.footer-block {
+}
+.tabs-below > .nav-tabs {
+  border-bottom: 0;
+}
+
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  display: none;
+  top: 0px;
+  bottom: 100px;
+  left: 0px;
+  right: 0px;
+}
+
+.tab-content > .active,
+.pill-content > .active {
+  display: block;
+}
+
+.loading-bar {
+  position: absolute;
+  top:45%;
+  width: 100%;
+  text-align: center;
+  color:#fff;
+}
+
+.tabbable > .nav-tabs {
+  border-top: 1px solid #ddd;
+  bottom: 0px;
+  width: 100%;
+  padding-left: 10px;
+}
+
+.tabbable > .nav-tabs > li {
+  margin-top: -1px;
+  margin-bottom: 0;
+  width: 25%;
+  font-size: 1.6em;
+}
+
+.tabs-below > .nav-tabs > li > a {
+  -webkit-border-radius: 0 0 4px 4px;
+     -moz-border-radius: 0 0 4px 4px;
+          border-radius: 0 0 4px 4px;
+}
+
+.tabs-below > .nav-tabs > li > a:hover,
+.tabs-below > .nav-tabs > li > a:focus {
+  border-top-color: #ddd;
+  border-bottom-color: transparent;
+}
+
+.tabs-below > .nav-tabs > .active > a,
+.tabs-below > .nav-tabs > .active > a:hover,
+.tabs-below > .nav-tabs > .active > a:focus {
+  border-color: transparent #ddd #ddd #ddd;
+}

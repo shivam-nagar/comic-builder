@@ -1,0 +1,25 @@
+<div class="" ng-controller="TextSetterController">
+  <h1> Tell your story </h1>
+  <div class="chat">
+    <div class="bubble me"> 
+      <textarea
+        ng-model="text1"
+        style="width:99%"
+        ng-maxlength="60"
+        maxlength="60"
+        ng-model-options="{debounce: 1000}">
+      </textarea>
+    </div>
+    <br>
+    <div class="bubble you"> 
+      <textarea
+        ng-model="text2"
+        style="width:99%"
+        ng-maxlength="60"
+        maxlength="60"
+        ng-model-options="{debounce: 1000}">
+      </textarea>
+    </div>
+  </div>
+</div>
+

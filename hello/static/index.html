@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="/static/manifest.json">
+
+    <title> Comic builder </title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/css/jquery.mobile.flatui.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular.min.js"> </script>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+
+    <script src="/static/js/canvasDirective.js"></script>
+    <script src="/static/js/app.js"></script>
+  </head>
+  <body ng-app="ComicBuilderApp">
+    <div class="" ng-controller="LayoutController">
+      <div data-role="header" class="ui-header ui-bar-a" role="banner" style="margin-right: -15px;">
+        <h1 class="ui-title text-center" role="heading" aria-level="1" style="width: 100%; margin: 0px;padding: 30px;">
+         <span style="margin-left: 50px"> 3 Panel Stories </span>
+         <span class="pull-right glyphicon glyphicon-cloud-upload" ng-click="selectedTab = 'overview'"> </span> 
+        </h1>
+      </div>
+
+      <div class="row comic-large-pane-container" ng-controller="ComicStripController">
+        <div class="col-xs-12 text-center" ng-init="initialise()" style="padding-right: 0px;"> 
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-wrap="false" data-interval="false">
+            <div class="loading-bar"> Preparing...  </div>
+
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+              <div class="item active">
+                <sprite-sheet-runner frame="strip[0]" id="0" stage="strip[0].stage"></sprite-sheet-runner>
+              </div>
+              <div class="item">
+                <sprite-sheet-runner frame="strip[1]" id="1" stage="strip[1].stage"></sprite-sheet-runner>
+              </div>
+              <div class="item">
+                <sprite-sheet-runner frame="strip[2]" id="2" stage="strip[2].stage"></sprite-sheet-runner>
+              </div>
+              <h1> &nbsp; </h1>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" ng-hide="idx==0">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" ng-hide="idx==2">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row text-center footer">
+        <div class="">
+          <div class="tabbable">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" ng-class="{'active':selectedTab=='overview'}">
+                <a href="#overview" aria-controls="overview" role="tab" data-toggle="tab" ng-click="selectedTab='overview'">
+                <span class="glyphicon glyphicon-blackboard"> </span>
+              </a></li>
+              <li role="presentation" ng-class="{'active':selectedTab=='character'}">
+                <a href="#character" aria-controls="character" role="tab" data-toggle="tab" ng-click="selectedTab='character'">
+                <span class="glyphicon glyphicon-user"> </span>
+              </a></li>
+              <li role="presentation" ng-class="{'active':selectedTab=='text'}">
+                <a href="#text" aria-controls="text" role="tab" data-toggle="tab" ng-click="selectedTab='text'">
+                <span class="glyphicon glyphicon-text-size"> </span>
+              </a></li>
+              <li role="presentation" ng-class="{'active':selectedTab=='background'}">
+                <a href="#background" aria-controls="background" role="tab" data-toggle="tab" ng-click="selectedTab='background'">
+                <span class="glyphicon glyphicon-picture"> </span>
+              </a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane" id="overview" ng-class="{'active':selectedTab=='overview'}">
+                <div ng-include src="'/static/templates/overview-template.html'"> </div>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="character" ng-class="{'active':selectedTab=='character'}">
+                <div ng-include src="'/static/templates/character-template.html'"> </div>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="text" ng-class="{'active':selectedTab=='text'}">
+                <div ng-include src="'/static/templates/text-template.html'"> </div>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="background" ng-class="{'active':selectedTab=='background'}">
+                <div ng-include src="'/static/templates/background-template.html'"> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <canvas width='1240' id="papaCanvas" height='320' style='margin-top:100px;display:none;'></canvas>
+
+    </div>
+
+    <script type="text/javascript">
+        document.fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen;
+
+        function requestFullscreen(element) {
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullScreen) {
+                element.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+        }
+
+        if (document.fullscreenEnabled) {
+            requestFullscreen(document.documentElement);
+        }
+
+    </script>
+  </body>
+</html>

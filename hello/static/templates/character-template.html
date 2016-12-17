@@ -1,0 +1,20 @@
+<div class="" ng-controller="CharacterSelectController">
+  <div class="character-selector">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" ng-repeat="character in characters track by $index" ng-class="{'active':selectedCharacterIndex == $index}">
+        <a ng-href="#{{character.name}}" aria-controls="" role="tab" data-toggle="tab">{{ character.name }}</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane character-list-scroll" id="{{character.name}}" ng-repeat="character in characters track by $index"  ng-class="{'active':selectedCharacterIndex == $index}">
+        <span class="character-img-container" ng-repeat="posture in character.postures" ng-click="setCharacter(posture)">
+          <img ng-src="{{ posture.img }}" > 
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
