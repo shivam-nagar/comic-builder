@@ -16,7 +16,9 @@
     header .fw-feed-title a:hover{color:#505659;}
     header .fw-feed-title a:visited{color:#505659;}
   #fw-feed-items-scroll-area{background-color:#ffffff; background-image:none; width: 100%; overflow:hidden;}
-    
+    #fw-feed-items-scroll-area > div {
+      height: 1000px !important;
+    }
     #fw-feed-items{margin:0;padding:0; overflow:hidden; z-index:-999;}
     
   #fw-feed-items .fw-feed-item{margin:0;padding:20px 0;clear:both;border-bottom: 1px dashed #CCCCCC;}
@@ -37,7 +39,9 @@
     #fw-feed-items .fw-feed-item-description{margin:0 2px 0 0;padding:0 2px 0 0;color:#505659;word-wrap:break-word;line-height:1.5;font-size:12px;overflow: hidden;display: block;}
     #fw-feed-items .fw-feed-item-date{margin:5px 0 0 0;padding:0;font-size:12px;;color:#505659;overflow:hidden;text-overflow:ellipsis;display:block;}/***非表示の場合はdisplay:none***/
     #fw-feed-items .fw-feed-item-link{margin:0;padding:0;font-size:12px;color:#505659;overflow:hidden;text-overflow:ellipsis;display:block;}/***非表示の場合はdisplay:none***/
-   
+    .fw-branding {
+      display: none;
+    }
 #fw-feed-items .fw-feed-item-image {
   width: 100% !important;
 }
