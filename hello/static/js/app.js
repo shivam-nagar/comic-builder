@@ -11,7 +11,7 @@ app.controller("LayoutController", [ '$scope', '$rootScope', function($scope, $r
       })
     })
 }]);
-app.controller("OverviewController", [ '$scope', '$rootScope', function($scope, $rootScope) {
+app.controller("OverviewController", [ '$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
     $scope.selectedPanel = 0;
     $scope.$watch('selectedPanel', function(newVal){
       $('.carousel').carousel(newVal);
@@ -38,18 +38,26 @@ app.controller("OverviewController", [ '$scope', '$rootScope', function($scope, 
 
       return stage.toDataURL();
     }
+    $scope.uploading = false;
     $scope.saveComic = function(){
+      $scope.uploading = true;
       var dataURL = $scope.generatePapaCanvas();
       $.ajax({
         type: "POST",
         url: "/add/",
         data: { 
            imgBase64: dataURL,
-           title: $scope.title || "Noname",
+           title: $scope.title || "Untitled",
            subtitle: $scope.author || "Anonymous"
         }
       }).done(function(o) {
-        console.log('saved'); 
+        $scope.$applyAsync( function(){
+          $scope.uploading = false;
+          console.log('saved'); 
+          if(o.data && o.data.url){
+            window.location.assign(o.data.url)
+          }
+        });
       });    
     }
 
