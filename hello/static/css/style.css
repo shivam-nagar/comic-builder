@@ -56,9 +56,10 @@ body {
   height: 260px;
   margin-top:20px;
 }
-.comic-panel-container .btn.btn-lg {
+.btn.btn-lg {
   font-size: 32px;
   letter-spacing: 1px;
+  border-radius: 3px;
 }
 .comic-panel {
   border: 1px solid #333;

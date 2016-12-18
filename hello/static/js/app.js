@@ -38,8 +38,8 @@ app.controller("OverviewController", [ '$scope', '$rootScope', '$location', func
 
       return stage.toDataURL();
     }
-    $scope.uploading = false;
-    $scope.saveComic = function(){
+    $scope.$root.uploading = false;
+    $scope.$root.saveComic = function(){
       $scope.uploading = true;
       var dataURL = $scope.generatePapaCanvas();
       $.ajax({

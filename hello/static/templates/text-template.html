@@ -21,5 +21,12 @@
       </textarea>
     </div>
   </div>
+
+  <button class="btn btn-lg btn-success" ng-click="$root.saveComic()" ng-if="!$root.uploading" style="margin-top:20px;"> 
+    <span class="glyphicon glyphicon-thumbs-up"> </span> &nbsp; Finish and View your story
+  </button>
+
+  <span class="text-center" ng-if="$root.uploading"> <h1> Uploading your comic... Please wait. </h1> </span>
+
 </div>
 
